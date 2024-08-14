@@ -23,15 +23,12 @@ This project is a demonstration of my software development skills, showcasing pr
    git clone https://github.com/yourusername/sonic-clone-game.git
    cd sonic-clone-game
 
-3. **Install Dependencies:"
+
+3. **Run the Game:**
 
    ```bash
-    pip install -r requirements.txt
+    python main.py
 
-4. **Run the Game:"
-
-   ```bash
-    pip install -r requirements.txt
 
 
 ### 4. **How to Play**
@@ -53,50 +50,64 @@ The game restarts automatically if Sonic loses. Enjoy the game!
 This game demonstrates the following design patterns:
 
 1. **State Pattern:**
-   - Used for managing Sonic's different states like `Idle`, `Running`, and `Jumping`.
-   - Example: `IdleState`, `RunningState`, and `JumpingState` classes in `state.py`.
+   - The `State` pattern is utilized in handling the different states of Sonic (e.g., `IdleState`, `RunningState`, `JumpingState`). Each state encapsulates behavior associated with a particular state of Sonic, and Sonic's behavior changes when its state changes.
+   - Example: In the `sonic.py` file, Sonic's movement logic is encapsulated in different state classes. For example, when Sonic is in the RunningState, it handles running animations and movement, while in `JumpingState`, it handles the upward and downward motion of Sonic.
 
 2. **Strategy Pattern:**
-   - Employed for handling different movement behaviors.
-   - Example: `FacingLeftState` and `FacingRightState` in `direction_state.py`.
+   - The `Strategy pattern` is implemented to handle different movement strategies for Sonic's direction (left or right).
+   - Example: The `FacingLeftState` and `FacingRightState` classes in the `direction_state.py` file represent different strategies for rendering Sonic's image based on the direction he's facing.
 
 3. **Observer Pattern:**
-   - Used for managing game events, such as collisions between Sonic and enemies.
-   - Example: `Observer` and `Subject` classes in `observer.py`.
+   - The `Observer` pattern is used for handling events in the game, such as collisions between Sonic and enemies or collectibles.
+   - Example: In the `observer.py` file, the observer pattern allows Sonic to notify observers when a particular event, like collision detection, occurs, triggering the appropriate response.
 
 4. **Command Pattern:**
-   - Implemented for handling input commands, such as moving left, right, or jumping.
-   - Example: `MoveLeftCommand`, `MoveRightCommand`, and `JumpCommand` classes in `command.py`.
+   - The `Command` pattern is used to handle input actions from the player, such as moving Sonic left or right or making him jump.
+   - Example: In the `command.py` file, actions like `MoveLeftCommand`, `MoveRightCommand`, and `JumpCommand` encapsulate the request to move Sonic in a specific direction or jump. The `Controller` class in `controller.py` invokes these commands based on user input.
 
-5. **Factory Pattern:**
-   - Used to create enemies and collectibles at runtime.
-   - Example: `EnemyFactory` and `CollectibleFactory` classes in `factory.py`.
+5. **Facade Pattern:**
+    - The `Facade` pattern is implemented to provide a simplified interface to the complex subsystem of the game. This pattern allows the game loop to interact with the game objects more easily.
+    - Example: The `GameFacade` class in `facade.py` provides a simplified interface to manage Sonic, levels, enemies, and collectibles.
 
-6. **Template Method Pattern:**
-   - Applied to define the steps for loading different levels.
-   - Example: `LevelState` and its subclasses in `level_state.py`.
+6. **Factory Pattern:**
+   - The `Factory` pattern is used for creating instances of objects like levels and enemies.
+   - Example: In `factory.py`, the `LevelFactory` and `EnemyFactory` classes are used to encapsulate the creation logic of levels and enemies, allowing easy scalability and separation of concerns.
+
+7. **Template Method Pattern:**
+   - The `Template Method` pattern is used to define the skeleton of an algorithm in the `LevelState` base class, while allowing subclasses to define specific steps.
+   - Example: In `level_state.py`, the `load_level` method in `LevelState` defines the general workflow of loading a level, while specific levels (e.g., `Level1State`, `Level2State`) override certain steps.
+
 
 ## SOLID Principles
 
 The game is designed with SOLID principles in mind:
 
 1. **Single Responsibility Principle:**
-   - Each class has a single responsibility, like handling Sonic's states, managing inputs, or controlling the game loop.
+    - **Explanation**: Each class in the game has a single responsibility. For example, the `Sonic` class is responsible only for managing Sonic's attributes and states, while `LevelState` handles the management of level-specific behaviors.
+    - **Example**: The `CollectibleInterface` class is solely responsible for defining the interface of collectibles, separating it from the actual game logic.
 
 2. **Open/Closed Principle:**
-   - The game is designed to be extendable. For example, adding a new level only requires creating a new subclass of `LevelState`.
+    - **Explanation**: The game is open for extension but closed for modification. Adding new levels or enemy types can be done without changing existing code.
+    - **Example**: To add a new level, you can simply create a new subclass of `LevelState` and implement the required methods. No other part of the game needs to be modified.
 
 3. **Liskov Substitution Principle:**
-   - Subclasses can be substituted for their base classes without affecting the functionality. For example, different types of enemies are interchangeable in the game.
+    - **Explanation**: Objects of a superclass should be replaceable with objects of a subclass without affecting the functionality of the program.
+    - **Example**: The `SonicState` subclasses like `IdleState`, `RunningState`, and `JumpingState` can be used interchangeably with Sonic without altering the expected 
 
 4. **Interface Segregation Principle:**
-   - Interfaces are designed to be specific to the clients' needs. For example, separate interfaces for `Collectible` and `Enemy`.
+    - **Explanation**: Clients should not be forced to depend on methods they do not use. The game adheres to this principle by providing lean and specific interfaces.
+    - **Example**: The `CollectibleInterface` only defines the methods that are necessary for a collectible to function, separating concerns and ensuring that subclasses only implement what they need.
 
 5. **Dependency Inversion Principle:**
-   - High-level modules are not dependent on low-level modules. Abstractions are used to manage dependencies between classes.
+    - **Explanation**: High-level modules should not depend on low-level modules. Both should depend on abstractions.
+    - **Example**: The game loop depends on abstract classes like `SonicState`, `LevelState`, and `Controller`, rather than concrete implementations, allowing for greater flexibility and easier modifications.
 
 ## Purpose of This Game
 
-This game was developed as a demonstration of my software development skills, specifically to showcase proficiency in Object-Oriented Programming (OOP), design patterns, and adherence to SOLID principles. The primary goal of this project is to illustrate the ability to create clean, maintainable, and scalable code through the application of best practices in software design.
+This game was developed as a demonstration of my software development skills, specifically to showcase my proficiency in Object-Oriented Programming (OOP) principles, the use of design patterns, and adherence to SOLID principles. The primary goal of this project is to illustrate my ability to create clean, maintainable, and scalable code through the application of best practices in software design.
 
-This game does not include any narrative or story and is solely intended to serve as a technical demonstration.
+It is important to note that this game does not include any particular story or narrative. Its sole purpose is to serve as a technical demonstration, showing how a game can be effectively programmed using OOP and design patterns, while fully respecting the SOLID principles.
+
+Throughout the development process, I carefully applied various design patterns to ensure that the game's architecture is both robust and flexible. By following SOLID principles, I aimed to create a codebase that is easy to extend and modify, while minimizing the risk of introducing errors.
+
+This project is not just about creating a game but about demonstrating the thought process, discipline, and technical expertise required to build a well-structured software application. It reflects my commitment to writing high-quality code that adheres to industry standards and best practices.
