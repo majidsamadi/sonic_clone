@@ -38,7 +38,6 @@ This project is a demonstration of my software development skills, showcasing pr
 
 Explain how users can interact with the game.
 
-```md
 ## How to Play
 
 - **Move Sonic:** Use the arrow keys to move Sonic left or right.
