@@ -21,7 +21,7 @@ This project is a demonstration of my software development skills, showcasing pr
 
    ```bash
    git clone https://github.com/majidsamadi/sonic_clone
-   cd sonic-clone-game
+   cd sonic-clone
 
 
 3. **Run the Game:**
