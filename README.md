@@ -20,7 +20,7 @@ This project is a demonstration of my software development skills, showcasing pr
 2. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/majidsamadi/sonic_clone
+   git clone https://github.com/majidsamadi/sonic_clone.git
    cd sonic-clone
 
 
