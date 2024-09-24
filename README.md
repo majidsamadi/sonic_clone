@@ -1,6 +1,6 @@
 # Sonic Clone Game
 
-This project is a demonstration of my software development skills, showcasing proficiency in Object-Oriented Programming (OOP), design patterns, and adherence to SOLID principles. The game does not include a narrative or story, and its primary purpose is to illustrate best practices in software design and development.
+This project is a demonstration of my software development skills that what I can do within a day, showcasing proficiency in Object-Oriented Programming (OOP), design patterns, and adherence to SOLID principles. The game does not include a narrative or story, and its primary purpose is to illustrate best practices in software design and development.
 
 ## Table of Contents
 
